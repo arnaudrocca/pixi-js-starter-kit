@@ -7,6 +7,7 @@ Experiment starter kit using Pixi.js, TweenMax & Webpack.
 * [ES6 - Babel](https://github.com/babel/babel)
 * [Pixi.js](https://github.com/pixijs/pixi.js)
 * [GSAP - TweenMax](http://greensock.com/tweenmax)
+* [Webpack](https://github.com/webpack/webpack)
 
 #### Install :
 
