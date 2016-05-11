@@ -1,6 +1,8 @@
 var path = require('path');
+var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: [
@@ -40,6 +42,14 @@ module.exports = {
                 ignore: ['.DS_Store', '.keep']
             }
         ),
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false,
+                drop_console: true
+                // pure_funcs: ['console.log']
+            }
+        }),
+        new CleanWebpackPlugin(['build'], { root: __dirname })
     ],
     module: {
         loaders: [
