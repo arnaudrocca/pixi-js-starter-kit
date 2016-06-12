@@ -15,7 +15,7 @@ class App {
         this.DELTA_TIME = 0;
         this.LAST_TIME = Date.now();
 
-        this.scene = new Scene();
+        this.scene = new Scene(this.width, this.height);
         this.emitter = new Emitter(this.scene);
 
         const root = document.body.querySelector('.app');
