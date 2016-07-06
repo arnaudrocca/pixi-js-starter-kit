@@ -1,6 +1,6 @@
 import 'TweenMax'
-import Scene from './scene/scene'
-import Emitter from './lib/emitter'
+import Scene from './utils/Scene'
+import Emitter from './lib/Emitter'
 
 class App {
 

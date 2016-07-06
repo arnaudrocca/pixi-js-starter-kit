@@ -1,4 +1,4 @@
-import Particle from './particle'
+import Particle from './Particle'
 
 class Emitter {
 
