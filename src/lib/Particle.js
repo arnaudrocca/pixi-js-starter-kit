@@ -14,6 +14,7 @@ class Particle extends Graphics {
 
         this.radius = 3;
         this.angle = Math.random() * 2 * Math.PI;
+        this.speed = 100;
 
         this.isAlive = true;
 
@@ -29,13 +30,15 @@ class Particle extends Graphics {
 
         this.clear();
 
-        this.velocityX = Math.cos(this.angle) * dt / 10;
-        this.velocityY = Math.sin(this.angle) * dt / 10;
+        this.velocityX = Math.cos(this.angle) * dt * this.speed / 1000;
+        this.velocityY = Math.sin(this.angle) * dt * this.speed / 1000;
 
         this.x += this.velocityX;
         this.y += this.velocityY;
 
-        if (this.x < 0  || this.x > window.innerWidth || this.y < 0 || this.y > window.innerHeight) {
+        this.radius -= dt / 1000;
+
+        if (this.radius <= 0) {
             this.isAlive = false;
         }
 

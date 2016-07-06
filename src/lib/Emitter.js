@@ -11,8 +11,8 @@ class Emitter {
         this.scene = scene;
 		this.particles = new Array();
 
-        this.delay = 500;
-        this.flow = 5;
+        this.delay = 150;
+        this.flow = 3;
         this.timer = 0;
 
 	}
