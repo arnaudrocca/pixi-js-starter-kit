@@ -52,6 +52,13 @@ module.exports = {
                     plugins: ['add-module-exports']
                 }
             }
-        ]
+        ],
+        postLoaders: [
+           {
+               test: /\.js$/,
+               loader: 'transform/cacheable?brfs',
+               include: path.resolve(__dirname, 'node_modules/pixi.js')
+           }
+       ]
     }
 };

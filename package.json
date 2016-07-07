@@ -30,6 +30,7 @@
     "clean-webpack-plugin": "^0.1.9",
     "copy-webpack-plugin": "^2.1.3",
     "html-webpack-plugin": "^2.16.1",
+    "transform-loader": "^0.2.3",
     "webpack": "^1.13.0",
     "webpack-dev-server": "^1.14.1"
   }
