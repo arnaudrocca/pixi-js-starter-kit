@@ -1,6 +1,6 @@
-import { Graphics } from 'pixi.js'
+import { Graphics } from 'pixi.js';
 
-class Particle extends Graphics {
+export default class Particle extends Graphics {
 
     /**
      * @constructor
@@ -23,20 +23,21 @@ class Particle extends Graphics {
     /**
      * @method
      * @name update
-     * @description Triggered on every TweenMax tick
-     * @param {number} dt - DELTA_TIME
+     * @description Triggered on every frame
+	 * @param {number} time - CURRENT_TIME
+	 * @param {number} delta - DELTA_TIME
      */
-    update(dt) {
+    update(time, delta) {
 
         this.clear();
 
-        this.velocityX = Math.cos(this.angle) * dt * this.speed / 1000;
-        this.velocityY = Math.sin(this.angle) * dt * this.speed / 1000;
+        this.velocityX = Math.cos(this.angle) * delta * this.speed / 1000;
+        this.velocityY = Math.sin(this.angle) * delta * this.speed / 1000;
 
         this.x += this.velocityX;
         this.y += this.velocityY;
 
-        this.radius -= dt / 1000;
+        this.radius -= delta / 1000;
 
         if (this.radius <= 0) {
             this.isAlive = false;
@@ -48,5 +49,3 @@ class Particle extends Graphics {
     }
 
 }
-
-export default Particle

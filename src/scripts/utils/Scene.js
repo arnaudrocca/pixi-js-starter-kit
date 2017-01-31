@@ -1,6 +1,6 @@
-import { CanvasRenderer, Container } from 'pixi.js'
+import { CanvasRenderer, Container } from 'pixi.js';
 
-class Scene {
+export default class Scene {
 
 	/**
 	 * @constructor
@@ -9,9 +9,9 @@ class Scene {
 
 		const pixelRatio = window.devicePixelRatio;
 
-		TweenMax.set('.app', {scale: 1 / pixelRatio, transformOrigin: '0% 0%'});
+		TweenMax.set('.app', { scale: 1 / pixelRatio, transformOrigin: '0% 0%' });
 
-		this.renderer = new CanvasRenderer(width, height, {antialias: true, resolution: pixelRatio});
+		this.renderer = new CanvasRenderer(width, height, { antialias: true, resolution: pixelRatio });
 
 		this.stage = new Container();
 
@@ -66,5 +66,3 @@ class Scene {
 	}
 
 }
-
-export default Scene

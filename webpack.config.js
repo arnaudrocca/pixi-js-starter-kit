@@ -1,10 +1,13 @@
-var path = require('path');
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var CopyWebpackPlugin = require('copy-webpack-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 
-module.exports = {
+const config = {
     entry: [
-        './src/index.js'
+        './src/scripts/index.js',
+        './src/styles/main.styl'
     ],
     output: {
         path: path.join(__dirname, 'build'),
@@ -28,7 +31,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: 'src/index.tpl.html',
+            template: 'src/templates/index.tpl.html',
             inject: 'body',
             filename: 'index.html'
         }),
@@ -37,7 +40,7 @@ module.exports = {
                 from: 'static'
             }],
             {
-                ignore: ['.DS_Store', '.keep']
+                ignore: ['.DS_Store']
             }
         ),
     ],
@@ -50,7 +53,22 @@ module.exports = {
                 query: {
                     presets: ['es2015'],
                     plugins: ['add-module-exports']
-                }
+                },
+            },
+            {
+                test: /\.styl$/,
+                exclude: /node_modules/,
+                loader: 'style!css!postcss!stylus'
+            },
+            {
+                test: /\.json$/,
+                exclude: /node_modules/,
+                loader: 'json'
+            },
+            {
+                test: /\.(png|jpg|ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
+                exclude: /node_modules/,
+                loader: 'file-loader'
             }
         ],
         postLoaders: [
@@ -60,5 +78,16 @@ module.exports = {
                include: path.resolve(__dirname, 'node_modules/pixi.js')
            }
        ]
+    },
+    postcss: () => {
+        return [
+            precss,
+            autoprefixer({
+                add: true,
+                remove: true
+            })
+        ];
     }
 };
+
+module.exports = config;
