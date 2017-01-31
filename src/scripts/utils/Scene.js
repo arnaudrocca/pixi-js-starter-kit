@@ -19,7 +19,7 @@ export default class Scene {
 
 	/**
 	 * @method
-	 * @name addChild
+	 * @name add
 	 * @description Add a child to the stage
 	 * @param {object} child - A PIXI object
 	 */
